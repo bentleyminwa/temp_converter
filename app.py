@@ -2,10 +2,14 @@ import tkinter as tk
 
 # unit converter function
 def fahrenheit_to_celsius():
-    # convert value for fahrenheit to celsius and insert into lbl_result
-    fahrenheit = ent_temperature.get()
-    celsius = (5 / 9) * (float(fahrenheit) - 32)
-    lbl_result["text"] = f"{round(celsius, 2)} \N{DEGREE CELSIUS}"
+    try:
+        # convert value for fahrenheit to celsius and insert into lbl_result
+        fahrenheit = ent_temperature.get()
+        celsius = (5 / 9) * (float(fahrenheit) - 32)
+        lbl_result["text"] = f"{round(celsius, 2)} \N{DEGREE CELSIUS}"
+    except ValueError:
+        # handle case where input is not a valid float
+        lbl_result["text"] = "Invalid input. Please enter a valid number!"
 
 
 # create a window object
